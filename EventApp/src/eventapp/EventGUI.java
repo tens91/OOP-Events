@@ -10,57 +10,23 @@ import javax.swing.JOptionPane;
  */
 public class EventGUI extends javax.swing.JFrame {
 
-    String date;
-    String location;
+    //declare variables and objects
+    String date, location;
     Boolean state;
+    private ArrayList <Event> eList;
     
-    private ArrayList<Event> eList;
-
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-    
-    //declare array
-    Event[] arr;
-    
-    //declare counter
-    int count;
-    
-
-//    String all = ;
     public EventGUI() {
+        //window title
         super("Events Calendar Program - NCI");
         initComponents();
-    eList = new ArrayList<Event>();        
-        
-        //create array
-        arr = new Event[100];
-        //create counter
-        count = 0;
-        
-        dateTF.setVisible(true);
-        dateJL.setVisible(true);
-        headlineTF.setVisible(false);
-        supportTF.setVisible(false);
-        headlineJL.setVisible(false);
-        supportJL.setVisible(false);
-        t1JL.setVisible(false);
-        t2JL.setVisible(false);
-        t1TF.setVisible(false);
-        t2TF.setVisible(false);
+
+        //create variables
+        date = new String();
+        location = new String();
+
+        //create arrayList
+        eList = new ArrayList <>();
+    
     }
 
     /**
@@ -673,15 +639,11 @@ public class EventGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_clearFormActionPerformed
 
     private void saveNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveNewActionPerformed
-            
+
         if(state == true) {
-            Concert temp = new Concert();
-
-            temp.setTeam1(t1TF.getText());
-            temp.setTeam2(t2TF.getText());
-
-            temp.setDate(date.getText());
-            temp.setLocation(if (avivaRB.isSelected()) {
+            Concert e = new Concert();
+            
+                if (avivaRB.isSelected()) {
                     location = "Aviva Stadium";
                 } else if (crokeRB.isSelected()) {
                     location = "Croke Park";
@@ -689,95 +651,39 @@ public class EventGUI extends javax.swing.JFrame {
                     location = "Thomond Park";
                 } else if(kingspanRB.isSelected()){
                     location = "Kingspan Stadium";
-                }
-            )
-        };
-
-        else if (state == false) {
-            Sport temp = new Sport();
-
-            temp.setHeadline(headline.getText());
-            temp.setSupport(support.getText());
-
-            temp.setDate(date.getText());
-            temp.setLocation(if (avivaRB.isSelected()) {
-                    location = "Aviva Stadium";
-                } else if (crokeRB.isSelected()) {
-                    location = "Croke Park";
-                } else if (thomondRB.isSelected()) {
-                    location = "Thomond Park";
-                } else if(kingspanRB.isSelected()){
-                    location = "Kingspan Stadium";
-                }
-            )
-        };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//declare Event object (super class)
-             Event e;
-            //create Event object
-            e = new Event();
-
-            //IF Statement to determine which location the Event will take place.
-            if (avivaRB.isSelected()) {
-                location = "Aviva Stadium";
-            } else if (crokeRB.isSelected()) {
-                location = "Croke Park";
-            } else if (thomondRB.isSelected()) {
-                location = "Thomond Park";
-            } else if(kingspanRB.isSelected()){
-                location = "Kingspan Stadium";
-            }
+                }            
             
-            date=dateTF.getText();
-            
-            //adding event details to object
             e.setLocation(location);
-            e.setDate(date);
+            e.setDate(dateTF.getText());
+            e.setHeadline(headlineTF.getText());
+            e.setSupport(supportTF.getText());
             
-            //adding event object to the array
-            arr[count] = e;
-            //increment counter
-            count++;
             
-//            team1=t1TF.getText();
-//            team2=t2TF.getText();
-//            headline=headlineTF.getText();
-//            support=supportTF.getText();
-//            
-//            JOptionPane.showMessageDialog(null, headline+" featuring: "+support+" at "+location+" on "+date);
-//            JOptionPane.showMessageDialog(null, team1+" vs. "+team2+" at "+location+" on "+date);
-//            JOptionPane.showMessageDialog(null, "The event has been added to the list.");
-
+            eList.add(e);
+        }
+        
+        if(state == false) {
+            Sport e = new Sport();
+            
+                if (avivaRB.isSelected()) {
+                    location = "Aviva Stadium";
+                } else if (crokeRB.isSelected()) {
+                    location = "Croke Park";
+                } else if (thomondRB.isSelected()) {
+                    location = "Thomond Park";
+                } else if(kingspanRB.isSelected()){
+                    location = "Kingspan Stadium";
+                }
+                
+            e.setLocation(location);
+            e.setDate(dateTF.getText());
+            e.setTeam1(t1TF.getText());
+            e.setTeam2(t2TF.getText());
+            
+            eList.add(e);
+            
+            JOptionPane.showMessageDialog(null, "The following information has been added to the Event calendar: \n Location: "+location+"\n Date: "+date+"\n ");
+        }
     }//GEN-LAST:event_saveNewActionPerformed
 
     private void t1TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t1TFActionPerformed
@@ -793,11 +699,8 @@ public class EventGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dateTFActionPerformed
 
     private void sportJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sportJBActionPerformed
-        
         state = false;
-        
         dateTF.setVisible(true);
-
         dateJL.setVisible(true);
         headlineTF.setVisible(false);
         supportTF.setVisible(false);
@@ -807,15 +710,11 @@ public class EventGUI extends javax.swing.JFrame {
         t2JL.setVisible(true);
         t1TF.setVisible(true);
         t2TF.setVisible(true);
-
-        e = new Sport();
-
     }//GEN-LAST:event_sportJBActionPerformed
 
     private void showJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showJBActionPerformed
         state = true;
         dateTF.setVisible(true);
-
         dateJL.setVisible(true);
         headlineTF.setVisible(true);
         supportTF.setVisible(true);
@@ -825,9 +724,6 @@ public class EventGUI extends javax.swing.JFrame {
         t2JL.setVisible(false);
         t1TF.setVisible(false);
         t2TF.setVisible(false);
-
-        e = new Concert();
-
     }//GEN-LAST:event_showJBActionPerformed
 
     private void displayBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBActionPerformed

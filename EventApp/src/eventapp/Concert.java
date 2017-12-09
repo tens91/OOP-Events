@@ -1,18 +1,24 @@
-
 package eventapp;
 
-
 public class Concert extends Event {
-    
-    private String headline, support, name;
- 
-    public Concert(String location, String date){
+
+    private String headline, support;
+    String name;
+
+    public Concert(String location, String date) {
         super(location, date);
-        this.name = name;
+        this.headline = headline;
+        this.support = support;
+
+        name = headline + " featurinng: " + support;
     }
 
-    public void setName(String name) {
-        this.name = headline +" vs. "+support;
+    public void setHeadline(String headline) {
+        this.headline = headline;
+    }
+
+    public void setSupport(String support) {
+        this.support = support;
     }
 
     public String getName() {
