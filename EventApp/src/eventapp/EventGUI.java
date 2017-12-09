@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eventapp;
 
 import java.util.ArrayList;
@@ -14,24 +10,48 @@ import javax.swing.JOptionPane;
  */
 public class EventGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EventGUI
-     */
-    String name;
-    String type;
     String date;
     String location;
+    Boolean state;
+    
+    private ArrayList<Event> eList;
 
-    ArrayList<Event> e;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    
+    //declare array
+    Event[] arr;
+    
+    //declare counter
+    int count;
+    
 
 //    String all = ;
     public EventGUI() {
         super("Events Calendar Program - NCI");
         initComponents();
-        e = new ArrayList<>();
-
+    eList = new ArrayList<Event>();        
+        
+        //create array
+        arr = new Event[100];
+        //create counter
+        count = 0;
+        
         dateTF.setVisible(true);
-
         dateJL.setVisible(true);
         headlineTF.setVisible(false);
         supportTF.setVisible(false);
@@ -41,15 +61,6 @@ public class EventGUI extends javax.swing.JFrame {
         t2JL.setVisible(false);
         t1TF.setVisible(false);
         t2TF.setVisible(false);
-        hostJL.setVisible(false);
-        g1JL.setVisible(false);
-        g2JL.setVisible(false);
-        hostTF.setVisible(false);
-        g1TF.setVisible(false);
-        g2TF.setVisible(false);
-        
-        
-        
     }
 
     /**
@@ -95,7 +106,6 @@ public class EventGUI extends javax.swing.JFrame {
         instructionsJL = new javax.swing.JLabel();
         showJB = new javax.swing.JButton();
         sportJB = new javax.swing.JButton();
-        otherJB = new javax.swing.JButton();
         dateJL = new javax.swing.JLabel();
         dateTF = new javax.swing.JTextField();
         headlineJL = new javax.swing.JLabel();
@@ -106,12 +116,6 @@ public class EventGUI extends javax.swing.JFrame {
         t2JL = new javax.swing.JLabel();
         t1TF = new javax.swing.JTextField();
         t2TF = new javax.swing.JTextField();
-        hostJL = new javax.swing.JLabel();
-        g1JL = new javax.swing.JLabel();
-        g2JL = new javax.swing.JLabel();
-        hostTF = new javax.swing.JTextField();
-        g1TF = new javax.swing.JTextField();
-        g2TF = new javax.swing.JTextField();
         locationJL = new javax.swing.JLabel();
         saveNew = new javax.swing.JButton();
         clearForm = new javax.swing.JButton();
@@ -120,6 +124,7 @@ public class EventGUI extends javax.swing.JFrame {
         kingspanRB = new javax.swing.JRadioButton();
         thomondRB = new javax.swing.JRadioButton();
         sep1 = new javax.swing.JSeparator();
+        displayB = new javax.swing.JButton();
 
         avivaD.setMinimumSize(new java.awt.Dimension(800, 450));
 
@@ -331,7 +336,7 @@ public class EventGUI extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(avivaLabel))
                     .addComponent(kingspanLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(viewPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator1)
                     .addComponent(jSeparator5))
@@ -409,13 +414,6 @@ public class EventGUI extends javax.swing.JFrame {
             }
         });
 
-        otherJB.setText("Other");
-        otherJB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                otherJBActionPerformed(evt);
-            }
-        });
-
         dateJL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         dateJL.setText("Date:");
 
@@ -446,21 +444,6 @@ public class EventGUI extends javax.swing.JFrame {
         t1TF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 t1TFActionPerformed(evt);
-            }
-        });
-
-        hostJL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        hostJL.setText("Host:");
-
-        g1JL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        g1JL.setText("Guest 1:");
-
-        g2JL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        g2JL.setText("Guest 2:");
-
-        g2TF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                g2TFActionPerformed(evt);
             }
         });
 
@@ -505,6 +488,13 @@ public class EventGUI extends javax.swing.JFrame {
         thomondRB.setForeground(new java.awt.Color(255, 255, 255));
         thomondRB.setText("Thomond Park");
 
+        displayB.setText("displayB");
+        displayB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout addPLayout = new javax.swing.GroupLayout(addP);
         addP.setLayout(addPLayout);
         addPLayout.setHorizontalGroup(
@@ -512,107 +502,102 @@ public class EventGUI extends javax.swing.JFrame {
             .addGroup(addPLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sep1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPLayout.createSequentialGroup()
+                    .addGroup(addPLayout.createSequentialGroup()
                         .addComponent(instructionsJL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(showJB)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sportJB)
-                        .addGap(18, 18, 18)
-                        .addComponent(otherJB)
-                        .addGap(11, 11, 11))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPLayout.createSequentialGroup()
                         .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateJL)
-                            .addComponent(headlineJL)
-                            .addComponent(supportJL)
-                            .addComponent(t1JL, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(t2JL)
-                            .addComponent(hostJL, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(g2JL)
-                            .addComponent(g1JL)
-                            .addComponent(locationJL))
-                        .addGap(48, 48, 48)
+                            .addComponent(locationJL)
+                            .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(t1JL)
+                                .addComponent(headlineJL)))
                         .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateTF)
-                            .addComponent(headlineTF)
-                            .addComponent(supportTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(t1TF)
-                            .addComponent(t2TF)
-                            .addComponent(hostTF)
-                            .addComponent(g1TF)
-                            .addComponent(g2TF)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(433, 433, 433))
                             .addGroup(addPLayout.createSequentialGroup()
-                                .addComponent(avivaRB)
-                                .addGap(18, 18, 18)
-                                .addComponent(crokeRB)
-                                .addGap(18, 18, 18)
-                                .addComponent(kingspanRB)
-                                .addGap(18, 18, 18)
-                                .addComponent(thomondRB)))))
-                .addGap(80, 80, 80)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(saveNew)
-                    .addComponent(clearForm))
-                .addGap(228, 228, 228))
+                                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(addPLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(saveNew)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(clearForm))
+                                    .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(addPLayout.createSequentialGroup()
+                                            .addGap(48, 48, 48)
+                                            .addComponent(avivaRB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(crokeRB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(kingspanRB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(thomondRB))
+                                        .addGroup(addPLayout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(headlineTF, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(supportJL)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(supportTF, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(displayB)
+                                            .addGroup(addPLayout.createSequentialGroup()
+                                                .addComponent(t1TF, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(t2JL)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(t2TF, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(addPLayout.createSequentialGroup()
+                        .addComponent(sep1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         addPLayout.setVerticalGroup(
             addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(instructionsJL)
-                    .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(showJB)
-                        .addComponent(sportJB)
-                        .addComponent(otherJB)))
-                .addGap(24, 24, 24)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(showJB)
+                    .addComponent(sportJB)
+                    .addComponent(clearForm)
+                    .addComponent(saveNew))
+                .addGap(20, 20, 20)
+                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(locationJL)
+                    .addComponent(avivaRB)
+                    .addComponent(crokeRB)
+                    .addComponent(kingspanRB)
+                    .addComponent(thomondRB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dateJL)
+                    .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sep1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addPLayout.createSequentialGroup()
+                        .addComponent(headlineJL)
+                        .addGap(18, 18, 18)
                         .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(locationJL)
-                            .addComponent(avivaRB)
-                            .addComponent(crokeRB)
-                            .addComponent(kingspanRB)
-                            .addComponent(thomondRB)
-                            .addComponent(saveNew))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dateJL)
-                            .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sep1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(clearForm))
-                .addGap(6, 6, 6)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(headlineJL)
-                    .addComponent(headlineTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(supportJL)
-                    .addComponent(supportTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(t1JL)
-                    .addComponent(t1TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(t2JL)
-                    .addComponent(t2TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hostJL)
-                    .addComponent(hostTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(g1JL)
-                    .addComponent(g1TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(g2JL)
-                    .addComponent(g2TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(373, 373, 373))
+                            .addComponent(t1JL)
+                            .addComponent(t1TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(t2JL)
+                            .addComponent(t2TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(addPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(headlineTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(supportJL)
+                        .addComponent(supportTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(109, 109, 109)
+                .addComponent(displayB)
+                .addContainerGap(479, Short.MAX_VALUE))
         );
 
         jPanel2.add(addP, "card3");
@@ -668,23 +653,132 @@ public class EventGUI extends javax.swing.JFrame {
 
     private void clearFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFormActionPerformed
 
+        //Clear button code to clear all text fields so the user can re-enter new event details. Also restores to original view.
+        dateTF.setText("");
+        headlineTF.setText("");
+        supportTF.setText("");
+        t1TF.setText("");
+        t2TF.setText("");
+
+        dateTF.setVisible(true);
+        dateJL.setVisible(true);
+        headlineTF.setVisible(false);
+        supportTF.setVisible(false);
+        headlineJL.setVisible(false);
+        supportJL.setVisible(false);
+        t1JL.setVisible(false);
+        t2JL.setVisible(false);
+        t1TF.setVisible(false);
+        t2TF.setVisible(false);
     }//GEN-LAST:event_clearFormActionPerformed
 
     private void saveNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveNewActionPerformed
-        //        String name, type, location, date, all;
-//        name = whoT.getText();
-  //      type = typeT.getText();
-    //    location = locationT.getText();
-      //  date = dateT.getText();
+            
+        if(state == true) {
+            Concert temp = new Concert();
 
-        JOptionPane.showMessageDialog(null, "The event has been added to the list.");
+            temp.setTeam1(t1TF.getText());
+            temp.setTeam2(t2TF.getText());
 
-        // TODO add your handling code here:
+            temp.setDate(date.getText());
+            temp.setLocation(if (avivaRB.isSelected()) {
+                    location = "Aviva Stadium";
+                } else if (crokeRB.isSelected()) {
+                    location = "Croke Park";
+                } else if (thomondRB.isSelected()) {
+                    location = "Thomond Park";
+                } else if(kingspanRB.isSelected()){
+                    location = "Kingspan Stadium";
+                }
+            )
+        };
+
+        else if (state == false) {
+            Sport temp = new Sport();
+
+            temp.setHeadline(headline.getText());
+            temp.setSupport(support.getText());
+
+            temp.setDate(date.getText());
+            temp.setLocation(if (avivaRB.isSelected()) {
+                    location = "Aviva Stadium";
+                } else if (crokeRB.isSelected()) {
+                    location = "Croke Park";
+                } else if (thomondRB.isSelected()) {
+                    location = "Thomond Park";
+                } else if(kingspanRB.isSelected()){
+                    location = "Kingspan Stadium";
+                }
+            )
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//declare Event object (super class)
+             Event e;
+            //create Event object
+            e = new Event();
+
+            //IF Statement to determine which location the Event will take place.
+            if (avivaRB.isSelected()) {
+                location = "Aviva Stadium";
+            } else if (crokeRB.isSelected()) {
+                location = "Croke Park";
+            } else if (thomondRB.isSelected()) {
+                location = "Thomond Park";
+            } else if(kingspanRB.isSelected()){
+                location = "Kingspan Stadium";
+            }
+            
+            date=dateTF.getText();
+            
+            //adding event details to object
+            e.setLocation(location);
+            e.setDate(date);
+            
+            //adding event object to the array
+            arr[count] = e;
+            //increment counter
+            count++;
+            
+//            team1=t1TF.getText();
+//            team2=t2TF.getText();
+//            headline=headlineTF.getText();
+//            support=supportTF.getText();
+//            
+//            JOptionPane.showMessageDialog(null, headline+" featuring: "+support+" at "+location+" on "+date);
+//            JOptionPane.showMessageDialog(null, team1+" vs. "+team2+" at "+location+" on "+date);
+//            JOptionPane.showMessageDialog(null, "The event has been added to the list.");
+
     }//GEN-LAST:event_saveNewActionPerformed
-
-    private void g2TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_g2TFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_g2TFActionPerformed
 
     private void t1TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t1TFActionPerformed
         // TODO add your handling code here:
@@ -698,32 +792,10 @@ public class EventGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dateTFActionPerformed
 
-    private void otherJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherJBActionPerformed
-
-        dateTF.setVisible(true);
-
-        dateJL.setVisible(true);
-        headlineTF.setVisible(false);
-        supportTF.setVisible(false);
-        headlineJL.setVisible(false);
-        supportJL.setVisible(false);
-        t1JL.setVisible(false);
-        t2JL.setVisible(false);
-        t1TF.setVisible(false);
-        t2TF.setVisible(false);
-        hostJL.setVisible(true);
-        g1JL.setVisible(true);
-        g2JL.setVisible(true);
-        hostTF.setVisible(true);
-        g1TF.setVisible(true);
-        g2TF.setVisible(true);
-        
-        
-        
-    }//GEN-LAST:event_otherJBActionPerformed
-
     private void sportJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sportJBActionPerformed
-
+        
+        state = false;
+        
         dateTF.setVisible(true);
 
         dateJL.setVisible(true);
@@ -735,19 +807,13 @@ public class EventGUI extends javax.swing.JFrame {
         t2JL.setVisible(true);
         t1TF.setVisible(true);
         t2TF.setVisible(true);
-        hostJL.setVisible(false);
-        g1JL.setVisible(false);
-        g2JL.setVisible(false);
-        hostTF.setVisible(false);
-        g1TF.setVisible(false);
-        g2TF.setVisible(false);
-        
-        
-        
+
+        e = new Sport();
+
     }//GEN-LAST:event_sportJBActionPerformed
 
     private void showJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showJBActionPerformed
-
+        state = true;
         dateTF.setVisible(true);
 
         dateJL.setVisible(true);
@@ -759,16 +825,16 @@ public class EventGUI extends javax.swing.JFrame {
         t2JL.setVisible(false);
         t1TF.setVisible(false);
         t2TF.setVisible(false);
-        hostJL.setVisible(false);
-        g1JL.setVisible(false);
-        g2JL.setVisible(false);
-        hostTF.setVisible(false);
-        g1TF.setVisible(false);
-        g2TF.setVisible(false);
-        
-        
-        
+
+        e = new Concert();
+
     }//GEN-LAST:event_showJBActionPerformed
+
+    private void displayBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBActionPerformed
+        for(int i = 0; i < arr.length; i++){
+            JOptionPane.showMessageDialog(null, "location: "+arr[i].getLocation()+"\n date: "+arr[i].getDate());
+        }
+    }//GEN-LAST:event_displayBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -820,14 +886,9 @@ public class EventGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton crokeRB;
     private javax.swing.JLabel dateJL;
     private javax.swing.JTextField dateTF;
-    private javax.swing.JLabel g1JL;
-    private javax.swing.JTextField g1TF;
-    private javax.swing.JLabel g2JL;
-    private javax.swing.JTextField g2TF;
+    private javax.swing.JButton displayB;
     private javax.swing.JLabel headlineJL;
     private javax.swing.JTextField headlineTF;
-    private javax.swing.JLabel hostJL;
-    private javax.swing.JTextField hostTF;
     private javax.swing.JLabel instructionsJL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -847,7 +908,6 @@ public class EventGUI extends javax.swing.JFrame {
     private javax.swing.JLabel kingspanLabel;
     private javax.swing.JRadioButton kingspanRB;
     private javax.swing.JLabel locationJL;
-    private javax.swing.JButton otherJB;
     private javax.swing.JButton printE;
     private javax.swing.JButton saveNew;
     private javax.swing.JSeparator sep1;

@@ -301,7 +301,7 @@
                           </Group>
                           <Component id="kingspanLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="180" max="32767" attributes="0"/>
+                      <EmptySpace pref="181" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jSeparator1" max="32767" attributes="0"/>
                           <Component id="jSeparator5" max="32767" attributes="0"/>
@@ -492,57 +492,77 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="sep1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="instructionsJL" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="showJB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="sportJB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="otherJB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="dateJL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="headlineJL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="supportJL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="t1JL" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="t2JL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="hostJL" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="g2JL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="g1JL" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="locationJL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Component id="t1JL" min="-2" max="-2" attributes="0"/>
+                                      <Component id="headlineJL" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="dateTF" max="32767" attributes="0"/>
-                                  <Component id="headlineTF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="supportTF" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="t1TF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="t2TF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="hostTF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="g1TF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="g2TF" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                                      <Component id="dateTF" min="-2" pref="571" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="433" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="avivaRB" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="crokeRB" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="kingspanRB" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="thomondRB" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="saveNew" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="clearForm" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                                  <Component id="avivaRB" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="crokeRB" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="kingspanRB" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="thomondRB" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="headlineTF" min="-2" pref="250" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="supportJL" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="supportTF" min="-2" pref="250" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                                  <Component id="displayB" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="t1TF" min="-2" pref="250" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="t2JL" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="t2TF" min="-2" pref="250" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="sep1" min="-2" pref="659" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="saveNew" min="-2" max="-2" attributes="0"/>
-                          <Component id="clearForm" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -550,71 +570,49 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="instructionsJL" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="showJB" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="sportJB" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="otherJB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="instructionsJL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="showJB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sportJB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="clearForm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="locationJL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="avivaRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="crokeRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="kingspanRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="thomondRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="dateJL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dateTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="sep1" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="headlineJL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="t1JL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="t1TF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="t2JL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="t2TF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="headlineTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="supportJL" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="supportTF" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="locationJL" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="avivaRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="crokeRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="kingspanRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="thomondRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="saveNew" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="dateJL" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dateTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="sep1" min="-2" pref="10" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="clearForm" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="headlineJL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="headlineTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="supportJL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="supportTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="t1JL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="t1TF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="t2JL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="t2TF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="hostJL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="hostTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="g1JL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="g1TF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="g2JL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="g2TF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="373" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                      <Component id="displayB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="479" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -642,14 +640,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sportJBActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="otherJB">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Other"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="otherJBActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="dateJL">
@@ -710,39 +700,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="t2TF">
-            </Component>
-            <Component class="javax.swing.JLabel" name="hostJL">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Host:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="g1JL">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Guest 1:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="g2JL">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Guest 2:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="hostTF">
-            </Component>
-            <Component class="javax.swing.JTextField" name="g1TF">
-            </Component>
-            <Component class="javax.swing.JTextField" name="g2TF">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="g2TFActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="locationJL">
               <Properties>
@@ -837,6 +794,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="sep1">
+            </Component>
+            <Component class="javax.swing.JButton" name="displayB">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="displayB"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="displayBActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

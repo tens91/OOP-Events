@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eventapp;
 
 /**
@@ -12,10 +8,14 @@ package eventapp;
 public class Event {
     
     //Superclass variables
-    String location = new String();
-    String date = new String();
+    private String location, date;
 
     //Constructor
+    public Event() {
+        location = new String();
+        date = new String();
+    }
+
     public Event(String location, String date) {
         this.location = location;
         this.date = date;

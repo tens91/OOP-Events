@@ -1,13 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eventapp;
 
 
-public class Concert {
+public class Concert extends Event {
     
-    //data members
-    
+    private String headline, support, name;
+ 
+    public Concert(String location, String date){
+        super(location, date);
+        this.name = name;
+    }
+
+    public void setName(String name) {
+        this.name = headline +" vs. "+support;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
